@@ -20,3 +20,23 @@
   )
 )
 ;;-----------------------------------------------------------
+
+;; Hexlet SICP, exercise 4
+;; double function
+(define (double f)
+  (lambda (x) (f (f x)))
+)
+
+;; repeated function
+(define (repeated f times)
+  (lambda (x)
+    (define (run-f f aggr times-left)
+      (cond
+        ((= 1 times-left) (f aggr))
+        (else (run-f f (f aggr) (- times-left 1)))
+      )
+    )
+    (run-f f x times)
+  )
+)
+;;-----------------------------------------------------------
