@@ -21,6 +21,33 @@
 )
 ;;-----------------------------------------------------------
 
+;; Hexlet SICP, exercise 3
+;; f-function, recursive approach
+(define (f n)
+  (cond
+    ((< n 3) n)
+    (else (+ (f (- n 1)) (* 2 (f (- n 2))) (* 3 (f (- n 3)))))
+  )
+)
+
+;; pascal triangle function, approach using factorial, see wiki
+(define (pascal-triangle row col)
+  (define (fact x)
+    (cond
+      ((< x 2) 1)
+      (else (fact-iter x 1))
+    )
+  )
+  (define (fact-iter cur acc)
+    (cond
+      ((= cur 1) acc)
+      (else (fact-iter (- cur 1) (* acc cur)))
+    )
+  )
+  (/ (fact (- row 1)) (* (fact (- col 1)) (fact (- row col))))
+)
+;;-----------------------------------------------------------
+
 ;; Hexlet SICP, exercise 4
 ;; double function
 (define (double f)
